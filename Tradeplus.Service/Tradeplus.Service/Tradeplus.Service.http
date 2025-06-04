@@ -1,0 +1,6 @@
+@Tradeplus.Service_HostAddress = http://localhost:5252
+
+GET {{Tradeplus.Service_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
