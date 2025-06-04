@@ -1,0 +1,59 @@
+<div class="tradeplus-container">
+  
+
+  <!-- Error Message Display -->
+  <div class="alert alert-error" *ngIf="errorMessage">
+    <span class="alert-icon">⚠</span>
+    {{ errorMessage }}
+  </div>
+
+  <!-- Securities Input Section -->
+  <div class="card">
+    <div class="card-header">
+      <h3 class="card-title">Add Securities</h3>
+    </div>
+    <div class="card-content">
+      <div class="form-group">
+        <label class="form-label">Securities (semicolon separated)</label>
+        <div class="input-group">
+          <input
+            type="text"
+            class="form-input"
+            [(ngModel)]="securityInput"
+            placeholder="Enter symbols: AAPL; GOOGL; MSFT; TSLA" />
+          <button class="btn btn-primary" (click)="addSecurities()">
+            Add Securities
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Grid Section -->
+  <div class="card">
+    <div class="card-header">
+      <h3 class="card-title">Trading Positions</h3>
+      <div class="card-meta">
+        <span class="badge">{{ rowData.length }} Securities</span>
+      </div>
+    </div>
+    <div class="card-content">
+      <div class="grid-container">
+        <ag-grid-angular
+          style="width: 100%; height: 400px;"
+          class="ag-theme-alpine professional-grid"
+          [rowData]="rowData"
+          [columnDefs]="columnDefs"
+          [defaultColDef]="defaultColDef">
+        </ag-grid-angular>
+      </div>
+    </div>
+  </div>
+
+  <!-- Submit Section -->
+  <div class="submit-section">
+    <button class="btn btn-success btn-lg" (click)="submitData()">
+      Submit Trading Orders
+    </button>
+  </div>
+</div>
